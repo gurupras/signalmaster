@@ -3,7 +3,8 @@ var socketIO = require('socket.io'),
     crypto = require('crypto');
 
 module.exports = function (server, config) {
-    var io = socketIO.listen(server);
+    //console.log(`signalmaster-socketio config: ${JSON.stringify(config, null, 2)}`);
+    var io = new socketIO(server, config.socketio);
 
     io.sockets.on('connection', function (client) {
         client.resources = {
